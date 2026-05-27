@@ -102,7 +102,7 @@
 
   .whyMe__headline {
     left: 34px;
-    top: 34%;
+    top: 33%;
   }
 
   .whyMe__headlineSvg {
@@ -153,7 +153,7 @@
 
   .skills__headline {
     left: 36px;
-    top: 58%;
+    top: 53%;
     transform: translateY(-50%);
   }
 
@@ -275,7 +275,7 @@
   }
 
   .workCard__btn {
-    min-width: 94px;
+    min-width: 80px;
     min-height: 38px;
     font-size: 13px;
   }
@@ -384,6 +384,35 @@
   .contact__infoText,
   .contact__detail {
     font-size: 15px;
+    line-height: 1.35;
+  }
+}
+
+/* iPad Air portrait: prevent skills aside overlap */
+@media screen and (min-width: 769px) and (max-width: 899px) and (min-height: 1000px) and (orientation: portrait) {
+  .skills__intro {
+    bottom: 250px;
+    width: min(460px, calc(100% - 300px));
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(5, 56px);
+    gap: 18px 20px;
+  }
+
+  .skills__icon {
+    width: 52px;
+  }
+
+  .skills__aside {
+    left: 160px;
+    right: auto;
+    bottom: 105px;
+    width: 430px;
+  }
+
+  .skills__asideText {
+    font-size: 16px;
     line-height: 1.35;
   }
 }
