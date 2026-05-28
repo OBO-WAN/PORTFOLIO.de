@@ -5,6 +5,7 @@ let legalMain = null;
 
 document.addEventListener("DOMContentLoaded", initLegalPageScrolling);
 
+/** Initializes legal page scrolling behavior. */
 function initLegalPageScrolling() {
   legalMain = document.querySelector("main.legalPage");
   if (!legalMain) return;
@@ -14,10 +15,12 @@ function initLegalPageScrolling() {
   bindAnchorScrolling("#legal-end", scrollToLegalEnd);
 }
 
+/** Binds horizontal wheel scrolling. */
 function bindWheelScrolling() {
   window.addEventListener("wheel", handleLegalWheel, { passive: false });
 }
 
+/** Handles wheel scrolling for the legal page. */
 function handleLegalWheel(event) {
   if (shouldIgnoreWheel(event)) return;
 
@@ -28,6 +31,7 @@ function handleLegalWheel(event) {
   scrollMainHorizontally(delta);
 }
 
+/** Checks whether wheel scrolling should be ignored. */
 function shouldIgnoreWheel(event) {
   if (isMobileViewport()) return true;
   if (event.ctrlKey || event.metaKey) return true;
@@ -35,12 +39,14 @@ function shouldIgnoreWheel(event) {
   return legalMain.scrollWidth <= legalMain.clientWidth;
 }
 
+/** Returns the dominant wheel delta. */
 function getMainWheelDelta(event) {
   const { deltaX, deltaY } = event;
 
   return Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
 }
 
+/** Scrolls the main legal container horizontally. */
 function scrollMainHorizontally(delta) {
   legalMain.scrollBy({
     left: delta * LEGAL_WHEEL_SCROLL_SPEED,
@@ -49,6 +55,7 @@ function scrollMainHorizontally(delta) {
   });
 }
 
+/** Binds anchor clicks to a scroll handler. */
 function bindAnchorScrolling(hash, scrollHandler) {
   document.querySelectorAll(`a[href="${hash}"]`).forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -59,6 +66,7 @@ function bindAnchorScrolling(hash, scrollHandler) {
   });
 }
 
+/** Scrolls to the start of the legal page. */
 function scrollToLegalStart(behavior = "smooth") {
   const target = document.querySelector("#legal-start");
 
@@ -70,6 +78,7 @@ function scrollToLegalStart(behavior = "smooth") {
   scrollMainToStart(behavior);
 }
 
+/** Scrolls to the end of the legal page. */
 function scrollToLegalEnd(behavior = "smooth") {
   const target = document.querySelector("#legal-end");
 
@@ -81,6 +90,7 @@ function scrollToLegalEnd(behavior = "smooth") {
   scrollMainToEnd(behavior);
 }
 
+/** Scrolls the window to a target element. */
 function scrollWindowToTarget(target, behavior = "smooth") {
   if (!target) return;
 
@@ -91,6 +101,7 @@ function scrollWindowToTarget(target, behavior = "smooth") {
   });
 }
 
+/** Scrolls the legal main container to the start. */
 function scrollMainToStart(behavior) {
   legalMain.scrollTo({
     left: 0,
@@ -99,6 +110,7 @@ function scrollMainToStart(behavior) {
   });
 }
 
+/** Scrolls the legal main container to the end. */
 function scrollMainToEnd(behavior) {
   const left = legalMain.scrollWidth - legalMain.clientWidth;
 
@@ -109,6 +121,7 @@ function scrollMainToEnd(behavior) {
   });
 }
 
+/** Checks whether the viewport is mobile-sized. */
 function isMobileViewport() {
   return window.innerWidth <= LEGAL_MOBILE_BREAKPOINT;
 }
