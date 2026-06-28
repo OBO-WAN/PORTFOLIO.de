@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
 
-$recipientEmail = 'francisco@naranjo.io';
-$fromEmail = 'francisco@naranjo.io';
-$fromName = 'Francisco Naranjo Website';
+$recipientEmail = 'kontakt@francisco-naranjo.de';
+$fromEmail = 'kontakt@francisco-naranjo.de';
+$fromName = 'Francisco Naranjo | Website';
 
-function jsonResponse(int $statusCode, array $payload): never
+function jsonResponse(int $statusCode, array $payload): void
 {
     http_response_code($statusCode);
     echo json_encode($payload, JSON_UNESCAPED_UNICODE);

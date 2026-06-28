@@ -1,7 +1,8 @@
 .myWork__section {
   position: relative;
-  width: calc(160px + (919px * 2) + (24px * 2) + 32px + 420px);
-  /*if needed, change to calc (160px + (919px * number of cards) + (24px * (number of cards - 1)) + 32px + 420px*/
+  width: calc(160px + (919px * 3) + (24px * 2) + 32px + 420px);
+  /* currently 3 project cards + gaps + ongoing-project panel */
+    /*if needed, change to calc (160px + (919px * number of cards) + (24px * (number of cards - 1)) + 32px + 420px*/
   min-width: calc(100vw - var(--sidebar-w));
   height: 100vh;
   flex-shrink: 0;

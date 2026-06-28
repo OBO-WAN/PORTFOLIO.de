@@ -1,6 +1,5 @@
 (() => {
-  const scriptUrl = document.currentScript?.src || "";
-  const contactEndpoint = getContactEndpoint(scriptUrl);
+  const contactEndpoint = getContactEndpoint();
   const isLocalDevelopment = isLocalHost();
 
   const forms = [
@@ -56,15 +55,8 @@
   };
 
   /** Builds the contact endpoint URL. */
-  function getContactEndpoint(scriptUrl) {
-    if (!scriptUrl) return "contact_form_mail.php";
-
-    const script = new URL(scriptUrl, window.location.href);
-    const relativePath = script.pathname.includes("/submit/")
-      ? "../../contact_form_mail.php"
-      : "../contact_form_mail.php";
-
-    return new URL(relativePath, script).href;
+  function getContactEndpoint() {
+    return `${window.location.origin}/contact_form_mail.php`;
   }
 
   /** Checks local development hostnames. */
